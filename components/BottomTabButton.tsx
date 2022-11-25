@@ -1,0 +1,234 @@
+import * as React from 'react';
+import {NavigationContainer} from '@react-navigation/native';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import { Image, View } from 'react-native';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import {GoldGradient} from '../components/Gradient';
+
+import {ShopScreen} from '../screens/ShopScreen';
+import {CameraScreen} from '../screens/CameraScreen';
+import {ClosetScreen} from '../screens/ClosetScreen';
+import {AccountScreen} from '../screens/AccountScreen';
+import {CreateShadeScreen} from '../screens/CreateShadeScreen';
+import {HomeScreen} from '../screens/HomeScreen';
+import {styles} from '../CSS';
+import { Header } from './Header';
+import { MyCartScreen } from '../screens/MyCartScreen';
+import { OrdersScreen } from '../screens/OrdersScreen';
+import { AddressScreen } from '../screens/AddressScreen';
+import { PaymentScreen } from '../screens/PaymentScreen';
+import { HelpAndSupportScreen } from '../screens/HelpAndSupportScreen';
+import { DeviceManagerScreen } from '../screens/DeviceManagerScreen';
+import { DeviceTutorialScreen } from '../screens/DeviceTutorialScreen';
+import { CartridgeManagerScreen } from '../screens/CartridgeManagerScreen';
+import { LogoutScreen } from '../screens/LogoutScreen';
+import { AppVersionScreen } from '../screens/AppVersionScreen';
+import { RoughScreen } from '../screens/Rough';
+import { UserManualScreen } from '../screens/UserManualScreen';
+import { ShadesFromBase } from '../screens/ShadesFromBase';
+
+const Tab = createBottomTabNavigator();
+const Stack = createNativeStackNavigator();
+
+function CameraButton() {
+  return (
+    <View>
+      <Image source={require('../assets/icons/ticket.png')} style={styles.bottomTabIcons}/>
+    </View>
+  )
+}
+
+
+function MyTabs() {
+  return (
+    <Tab.Navigator
+      initialRouteName="Home"
+      screenOptions={{
+        tabBarStyle: {height: styles.bottomTab.height},
+        tabBarInactiveTintColor: styles.bottomTab.tabBarInactiveTintColor,
+        tabBarActiveTintColor: styles.bottomTab.tabBarActiveTintColor,
+        tabBarActiveBackgroundColor: styles.bottomTab.tabBarActiveBackgroundColor,
+        tabBarInactiveBackgroundColor: styles.bottomTab.tabBarInactiveBackgroundColor,
+      }}>
+      <Tab.Screen
+        name="Home"
+        component={HomeScreen}
+        options={{
+          tabBarIcon: ({color, size}) => (
+            <Image source={require('../assets/icons/home.png')} style={styles.bottomTabIcons}/>
+          ),
+          headerShown: false,
+          tabBarShowLabel: false,
+        }}
+      />
+      <Tab.Screen
+        name="Shop"
+        component={ShopScreen}
+        options={{
+          tabBarIcon: ({color, size}) => (
+            <Image source={require('../assets/icons/cart.png')} style={styles.bottomTabIcons}/>
+          ),
+          header: (props) => (<Header name="ALL CATEGORIES" isArrow={false}/>),
+          tabBarShowLabel: false,
+        }}
+      />
+      <Tab.Screen
+        name="Camera"
+        component={CameraScreen}
+        options={{
+          tabBarLabel: 'Camera',
+          tabBarIcon: ({color, size}) => (
+            // <CameraButton />
+            <GoldGradient component={CameraButton} style={styles.cameraButton}></GoldGradient>
+            // <Image source={require('../assets/icons/ticket.png')} style={styles.bottomTabIcons}/>
+          ),
+          header: (props) => (<Header name="CAMERA" isArrow={false}/>),
+          tabBarShowLabel: false,
+        }}
+      />
+      <Tab.Screen
+        name="Closet"
+        component={ClosetScreen}
+        options={{
+          tabBarLabel: 'Closet',
+          tabBarIcon: ({color, size}) => (
+            <Image source={require('../assets/icons/heart.png')} style={styles.bottomTabIcons}/>
+          ),
+          header: (props) => (<Header name="MY SHADE CLOSET" isArrow={false}/>),
+          tabBarShowLabel: false,
+        }}
+      />
+      <Tab.Screen
+        name="Account"
+        component={AccountScreen}
+        options={{
+          tabBarLabel: 'Account',
+          tabBarIcon: ({color, size}) => (
+            <Image source={require('../assets/icons/profile.png')} style={styles.bottomTabIcons}/>
+          ),
+          header: (props) => (<Header name="MY ACCOUNT" isArrow={false}/>),
+          tabBarShowLabel: false,
+        }}
+      />
+    </Tab.Navigator>
+  );
+}
+
+
+function ScreenStack() {
+  return (
+    <Stack.Navigator
+      initialRouteName="MyTabsScreen"
+      screenOptions={{
+        // headerShown: false,
+      }}>
+      <Stack.Screen 
+        name="MyTabsScreen" 
+        component={MyTabs} 
+        options={{
+          headerShown: false
+        }}/>
+      <Stack.Screen 
+        name="ShadeFromBase" 
+        component={ShadesFromBase} 
+        options={{
+          header: (props) => (<Header name="" isArrow={true}/>),
+        }}/>
+      <Stack.Screen 
+        name="CreateShadeScreen" 
+        component={CreateShadeScreen} 
+        options={{
+          header: (props) => (<Header name="" isArrow={true}/>),
+        }}/>
+      <Stack.Screen 
+        name="MyCartScreen" 
+        component={MyCartScreen}
+        options={{
+          header: (props) => (<Header name="MY CART" isArrow={true}/>),
+        }}/>
+      <Stack.Screen 
+        name="OrdersScreen" 
+        component={OrdersScreen} 
+        options={{
+          header: (props) => (<Header name="MY ORDERS" isArrow={true}/>),
+        }}/>
+      <Stack.Screen 
+        name="AddressScreen" 
+        component={AddressScreen} 
+        options={{
+          header: (props) => (<Header name="ADDRESS" isArrow={true}/>),
+        }}/>
+      <Stack.Screen 
+        name="PaymentScreen" 
+        component={PaymentScreen} 
+        options={{
+          header: (props) => (<Header name="PAYEMENT METHODS" isArrow={true}/>),
+        }}/>
+      <Stack.Screen
+        name="HelpAndSupportScreen"
+        component={HelpAndSupportScreen}
+        options={{
+          header: (props) => (<Header name="HELP & SUPPORT" isArrow={true}/>),
+        }}
+      />
+      <Stack.Screen
+        name="DeviceManagerScreen"
+        component={DeviceManagerScreen}
+        options={{
+          header: (props) => (<Header name="DEVICE MANAGER" isArrow={true}/>),
+        }}
+      />
+      <Stack.Screen
+        name="DeviceTutorialScreen"
+        component={DeviceTutorialScreen}
+        options={{
+          header: (props) => (<Header name="DEVICE TUTORIAL" isArrow={true}/>),
+        }}
+      />
+      <Stack.Screen
+        name="CartridgeManagerScreen"
+        component={CartridgeManagerScreen}
+        options={{
+          header: (props) => (<Header name="CARTRIDGE MANAGER" isArrow={true}/>),
+        }}
+      />
+      <Stack.Screen 
+        name="LogoutScreen" 
+        component={LogoutScreen} 
+        options={{
+          header: (props) => (<Header name="LOGOUT" isArrow={true}/>),
+        }}
+      />
+      <Stack.Screen 
+        name="UserManualScreen" 
+        component={UserManualScreen} 
+        options={{
+          header: (props) => (<Header name="USER MANUAL" isArrow={true}/>),
+        }}/>
+      <Stack.Screen 
+        name="AppVersionScreen" 
+        component={AppVersionScreen} 
+        options={{
+          header: (props) => (<Header name="APP VERSION" isArrow={true}/>),
+        }}/>
+      <Stack.Screen 
+        name="RoughScreen" 
+        component={RoughScreen} 
+        options={{
+          header: (props) => (<Header name="ROUGH SCREEN" isArrow={true}/>),
+        }}/>
+    </Stack.Navigator>
+  );
+}
+
+
+
+export default function App() {
+  return (
+    <NavigationContainer>
+      {/* <MyTabs />  */}
+      <ScreenStack />
+    </NavigationContainer>
+  );
+}
