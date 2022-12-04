@@ -19,6 +19,7 @@ import { MyCartScreen } from './MyCartScreen';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { RoughScreen } from './Rough';
 import { GoldGradient, GoldGradientText } from '../components/Gradient';
+import { LinearGradient } from 'expo-linear-gradient';
 
 const Stack = createNativeStackNavigator();
 
@@ -39,13 +40,24 @@ export function AccountScreen({navigation}) {
         <GoldGradientText style={styles.CinzelGoldBold}>
         Account
         </GoldGradientText>
-        <Pressable
-          onPress={() => navigation.navigate('OrdersScreen')}
-          style={AccountScreenStyles.button}
-        >
-          <GoldGradientText style={styles.InriaGold}>Orders</GoldGradientText>
-          <Icon name="chevron-right" size={10} color={colors.goldLight}/>
+        <LinearGradient
+        colors={[colors.grey, colors.darkGrey]}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 0 }}
+        style={AccountScreenStyles.gradient}>
+          <Pressable
+            onPress={() => navigation.navigate('OrdersScreen')}
+            style={AccountScreenStyles.button}
+          >
+            <GoldGradientText style={styles.InriaGold}>Orders</GoldGradientText>
+            <Icon name="chevron-right" size={10} color={colors.goldLight}/>
         </Pressable>
+        </LinearGradient>
+        <LinearGradient
+        colors={[colors.grey, colors.darkGrey]}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 0 }}
+        style={AccountScreenStyles.gradient}>
         <Pressable
           onPress={() => navigation.navigate('AddressScreen')}
           style={AccountScreenStyles.button}
@@ -53,6 +65,12 @@ export function AccountScreen({navigation}) {
           <GoldGradientText style={styles.InriaGold}>Address</GoldGradientText>
           <Icon name="chevron-right" size={10} color={colors.goldLight}/>
         </Pressable>
+        </LinearGradient>
+        <LinearGradient
+        colors={[colors.grey, colors.darkGrey]}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 0 }}
+        style={AccountScreenStyles.gradient}>
         <Pressable
           onPress={() => navigation.navigate('PaymentScreen')}
           style={AccountScreenStyles.button}
@@ -60,6 +78,12 @@ export function AccountScreen({navigation}) {
           <GoldGradientText style={styles.InriaGold}>Payment Methods</GoldGradientText>
           <Icon name="chevron-right" size={10} color={colors.goldLight}/>
         </Pressable>
+        </LinearGradient>
+        <LinearGradient
+        colors={[colors.grey, colors.darkGrey]}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 0 }}
+        style={AccountScreenStyles.gradient}>
         <Pressable
           onPress={() => navigation.navigate('HelpAndSupportScreen')}
           style={AccountScreenStyles.button}
@@ -67,6 +91,12 @@ export function AccountScreen({navigation}) {
           <GoldGradientText style={styles.InriaGold}>Help & Support</GoldGradientText>
           <Icon name="chevron-right" size={10} color={colors.goldLight}/>
         </Pressable>
+        </LinearGradient>
+        <LinearGradient
+        colors={[colors.grey, colors.darkGrey]}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 0 }}
+        style={AccountScreenStyles.gradient}>
         <Pressable
           onPress={() => navigation.navigate('LogoutScreen')}
           style={AccountScreenStyles.button}
@@ -74,11 +104,17 @@ export function AccountScreen({navigation}) {
          <GoldGradientText style={styles.InriaGold}>Logout</GoldGradientText>
          <Icon name="chevron-right" size={10} color={colors.goldLight}/>
         </Pressable>
+        </LinearGradient>
       </View>
       <View style={AccountScreenStyles.container}>
       <GoldGradientText style={styles.CinzelGoldBold}>
         Devices
         </GoldGradientText>
+        <LinearGradient
+        colors={[colors.grey, colors.darkGrey]}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 0 }}
+        style={AccountScreenStyles.gradient}>
         <Pressable
           onPress={() => navigation.navigate('DeviceManagerScreen')}
           style={AccountScreenStyles.button}
@@ -86,6 +122,12 @@ export function AccountScreen({navigation}) {
           <GoldGradientText style={styles.InriaGold}>Manage Devices</GoldGradientText>
           <Icon name="chevron-right" size={10} color={colors.goldLight}/>
         </Pressable>
+        </LinearGradient>
+        <LinearGradient
+        colors={[colors.grey, colors.darkGrey]}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 0 }}
+        style={AccountScreenStyles.gradient}>
         <Pressable
           onPress={() => navigation.navigate('CartridgeManagerScreen')}
           style={AccountScreenStyles.button}
@@ -93,6 +135,12 @@ export function AccountScreen({navigation}) {
           <GoldGradientText style={styles.InriaGold}>Cartridge Manager</GoldGradientText>
           <Icon name="chevron-right" size={10} color={colors.goldLight}/>
         </Pressable>
+        </LinearGradient>
+        <LinearGradient
+        colors={[colors.grey, colors.darkGrey]}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 0 }}
+        style={AccountScreenStyles.gradient}>
         <Pressable
           onPress={() => navigation.navigate('DeviceTutorialScreen')}
           style={AccountScreenStyles.button}
@@ -100,6 +148,12 @@ export function AccountScreen({navigation}) {
           <GoldGradientText style={styles.InriaGold}>Device Tutorials</GoldGradientText>
           <Icon name="chevron-right" size={10} color={colors.goldLight}/>
         </Pressable>
+        </LinearGradient>
+        <LinearGradient
+        colors={[colors.grey, colors.darkGrey]}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 0 }}
+        style={AccountScreenStyles.gradient}>
         <Pressable
           onPress={() => navigation.navigate('UserManualScreen')}
           style={AccountScreenStyles.button}
@@ -107,6 +161,12 @@ export function AccountScreen({navigation}) {
           <GoldGradientText style={styles.InriaGold}>User Manual</GoldGradientText>
           <Icon name="chevron-right" size={10} color={colors.goldLight}/>
         </Pressable>
+        </LinearGradient>
+        <LinearGradient
+        colors={[colors.grey, colors.darkGrey]}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 0 }}
+        style={AccountScreenStyles.gradient}>
         <Pressable
           onPress={() => navigation.navigate('AppVersionScreen')}
           style={AccountScreenStyles.button}
@@ -114,13 +174,14 @@ export function AccountScreen({navigation}) {
           <GoldGradientText style={styles.InriaGold}>App Version</GoldGradientText>
           <Icon name="chevron-right" size={10} color={colors.goldLight}/>
         </Pressable>
-        <Pressable
+        </LinearGradient>
+        {/* <Pressable
           onPress={() => navigation.navigate('RoughScreen')}
           style={AccountScreenStyles.button}
         >
           <GoldGradientText style={styles.InriaGold}>Rough Screen</GoldGradientText>
           <Icon name="chevron-right" size={10} color={colors.goldLight}/>
-        </Pressable>
+        </Pressable> */}
       </View>
     </ScrollView>
     </SafeAreaView>
@@ -142,19 +203,27 @@ export const AccountScreenStyles = StyleSheet.create({
     borderRadius: 5,
   },
   account: {},
+  gradient: {
+    padding: 20,
+    borderColor: 'black',
+    // borderWidth: 2,
+    borderBottomWidth: 1,
+    borderBottomColor: colors.goldLight,
+    borderRadius: 5,
+  },
   button: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    backgroundColor: colors.grey,
+    // backgroundColor: colors.grey,
     // marginTop: 3,
     // marginBottom: 3,
-    padding: 20,
-    borderColor: 'black',
-    // borderWidth: 2,
-    borderBottomWidth: 2,
-    borderBottomColor: colors.goldLight,
-    borderRadius: 5,
+    // padding: 20,
+    // borderColor: 'black',
+    // // borderWidth: 2,
+    // borderBottomWidth: 2,
+    // borderBottomColor: colors.goldLight,
+    // borderRadius: 5,
   },
   userImage: {
     height: 50,

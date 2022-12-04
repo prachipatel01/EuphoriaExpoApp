@@ -5,6 +5,7 @@ import ShadeColor from '../components/ShadeColor';
 import {styles, dimensions, padding, colors} from '../CSS';
 import { EmptyCartridge } from '../components/EmptyCartridge';
 import { GoldGradient, GoldGradientText, GreyGradient } from '../components/Gradient';
+import { LinearGradient } from 'expo-linear-gradient';
 
 function Button (props) {
   return (
@@ -16,7 +17,10 @@ function Button (props) {
 
 function CreateShadeContainer(props){
   return (
-    <View style={CreateShadeScreenStyle.createShadeContainer}>
+    <LinearGradient style={CreateShadeScreenStyle.createShadeContainer}
+    colors={[colors.grey, colors.darkGrey]}
+      start={{ x: 0, y: 0 }}
+      end={{ x: 1, y: 0 }}>
       <View style={CreateShadeScreenStyle.innerContainer}>
         <ShadeColor color={props.color} />
         <View>
@@ -31,13 +35,13 @@ function CreateShadeContainer(props){
       <GoldGradient component={Button} props={{text:'CREATE AGAIN'}} style={{margin: 10, maxWidth: 250}}></GoldGradient>
       </View>
       {/* <GoldGradient component={Button} props={{text:'TRY IT ON'}} style={{margin: 10}}></GoldGradient> */}
-    </View>
+    </LinearGradient>
   )
 }
 
 export function CreateShadeScreen({route, navigation}) {
   const {name, color, createdOn} = route.params;
-  console.log('name',name)
+  // console.log('name',name)
   return (
     <SafeAreaView style={styles.body}>
       <ScrollView contentContainerStyle={CreateShadeScreenStyle.outerContainer}>
@@ -62,10 +66,16 @@ export function CreateShadeScreen({route, navigation}) {
           </View>
         </View>
         <CreateShadeContainer name={name} color={color} createdOn={createdOn}/>
-        <Pressable style={styles.tryItOnButton}>
+        <LinearGradient
+        colors={[colors.darkGrey, colors.black]}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 0 }}
+        style={styles.tryItOnButton}>
+        <Pressable>
           <GoldGradientText style={styles.CinzelGold}>TRY IT ON</GoldGradientText>
           {/* <Text style={styles.CinzelGold}>TRY IT ON</Text> */}
         </Pressable>
+        </LinearGradient>
       </ScrollView>
     </SafeAreaView>
   );
@@ -82,7 +92,7 @@ export const CreateShadeScreenStyle = StyleSheet.create({
   createShadeContainer: {
     // alignItems: 'center',
     padding: 20,
-    backgroundColor: colors.grey,
+    // backgroundColor: colors.grey,
     width: dimensions.fullWidth - 25,
     margin: 10,
   },

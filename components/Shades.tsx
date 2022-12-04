@@ -5,7 +5,7 @@ import {BaseShades} from '../assets/shades';
 import {StyleSheet} from 'react-native';
 import { GoldGradientText } from './Gradient';
 
-export function Shades({navigation}) {
+export function Shades({navigation, baseShades}) {
   return (
     <View style={styles.shadesContainer}>
       {BaseShades.map((item, index) => {
@@ -14,7 +14,7 @@ export function Shades({navigation}) {
             <ImageBackground source={require('../assets/images/baseShades/gradient.png')} style={styles.shadeUniverseImageGradient} imageStyle={styles.shadeUniverseImageStyle}>
               <Pressable 
                 style={styles.shadeUniverseShades}
-                onPress = {() => navigation.navigate('ShadeFromBase')}>
+                onPress = {() => navigation.navigate('ShadeFromBase', baseShades={item})}>
                 <GoldGradientText style={[styles.CinzelGoldBold, styles.shadeUniverseText]}>{item.name}</GoldGradientText>
                 <Image source={require('../assets/icons/rightArrow2.png')}/>
               </Pressable>

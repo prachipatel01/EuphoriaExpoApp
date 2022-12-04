@@ -4,32 +4,44 @@ import {StyleSheet, View} from 'react-native';
 import {colors, dimensions, styles} from '../CSS';
 import ShadeColor from './ShadeColor';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import {LinearGradient} from 'expo-linear-gradient';
+import { GoldGradientText } from './Gradient';
 
 export function ShadeOrder({navigation, name, color, price, createdOn, isRating}) {
   return (
     <View style={ShadeOrderStyle.container}>
-      <View style={ShadeOrderStyle.shadeDetail}>
+      <LinearGradient style={ShadeOrderStyle.shadeDetail}
+      colors={[colors.grey, colors.darkGrey]}
+      start={{ x: 0, y: 0 }}
+      end={{ x: 1, y: 0 }}>
         <View style={ShadeOrderStyle.leftContent}>
           <ShadeColor color={color} />
           <View style={ShadeOrderStyle.middleContent}>
-            <Text style={styles.baseText}>{name}</Text>
-            <Text style={styles.normalText}>On {createdOn}</Text>
+            <GoldGradientText style={styles.CinzelGoldBold}>{name}</GoldGradientText>
+            {/* <Text style={styles.CinzelGoldBold}>{name}</Text> */}
+            <GoldGradientText tyle={styles.CinzelGoldBold}>On {createdOn}</GoldGradientText>
+            {/* <Text style={styles.CinzelGoldBold}>On {createdOn}</Text> */}
           </View>
         </View>
         <View style={ShadeOrderStyle.middleContent}>
-          <Text style={styles.baseText}>${price}</Text>
+          <GoldGradientText style={styles.CinzelGoldBold}>${price}</GoldGradientText>
+          {/* <Text style={styles.baseText}>${price}</Text> */}
         </View>
-      </View>
+      </LinearGradient>
       {isRating? (
-        <View style={ShadeOrderStyle.ratings}>
-          <Text style={styles.normalText}>Rate Product</Text>
-          <Icon name="star-o" size={15} color="black"/>
-          <Icon name="star-o" size={15} color="black"/>
-          <Icon name="star-o" size={15} color="black"/>
-          <Icon name="star-o" size={15} color="black"/>
-          <Icon name="star-o" size={15} color="black"/>
+        <LinearGradient style={ShadeOrderStyle.ratings}
+        colors={[colors.grey, colors.darkGrey]}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 0 }}>
+          <GoldGradientText style={[styles.CinzelGoldBold, {fontSize: 14}]}>Rate Product</GoldGradientText>
+          {/* <Text style={styles.normalText}>Rate Product</Text> */}
+          <Icon name="star-o" size={15} color={colors.goldLight}/>
+          <Icon name="star-o" size={15} color={colors.goldLight}/>
+          <Icon name="star-o" size={15} color={colors.goldLight}/>
+          <Icon name="star-o" size={15} color={colors.goldLight}/>
+          <Icon name="star-o" size={15} color={colors.goldLight}/>
           <View />
-        </View>
+        </LinearGradient>
       ): (
         <View />
       )}
@@ -39,7 +51,7 @@ export function ShadeOrder({navigation, name, color, price, createdOn, isRating}
 
 export const ShadeOrderStyle = StyleSheet.create({
   container: {
-    margin: 5,
+    margin: 10,
   },
   shadeDetail: {
     flexDirection: 'row',

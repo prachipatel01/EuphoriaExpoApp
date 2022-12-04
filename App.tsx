@@ -1,7 +1,7 @@
 import React, {useState, useEffect, useCallback} from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import BottomTabs from './components/BottomTabButton';
+import DefaultScreen from './components/BottomTabButton';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import AppLoading from 'expo-app-loading';
 import * as SplashScreen from 'expo-splash-screen';
@@ -69,7 +69,7 @@ export default function App() {
         <View style={styles.container} onLayout={onLayoutRootView}>
           {/* <Text>Open up App.tsx to start working on your app!</Text> */}
           <StatusBar style="auto" />
-          <BottomTabs />
+          <DefaultScreen />
         </View>
       </GestureHandlerRootView>
     );

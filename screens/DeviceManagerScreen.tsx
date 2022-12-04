@@ -1,15 +1,19 @@
-import {View, Text, Image} from 'react-native';
+import {View, Text, Image, Pressable} from 'react-native';
 import React from 'react';
 import {cartridges} from '../assets/cartridge';
 import {CartridgeWheel} from '../components/CartridgeValueWheel';
 import {colors, dimensions, styles} from '../CSS';
 import {StyleSheet} from 'react-native';
 import { GoldGradientText } from '../components/Gradient';
+import { LinearGradient } from 'expo-linear-gradient';
 
-export function DeviceManagerScreen() {
+export function DeviceManagerScreen({navigation}) {
   return (
     <View style={{...styles.body, height: dimensions.fullHeight}}>
-      <View style={DeviceManagerScreenStyle.container}>
+      <LinearGradient style={DeviceManagerScreenStyle.container}
+      colors={[colors.grey, colors.darkGrey]}
+      start={{ x: 0, y: 0 }}
+      end={{ x: 1, y: 0 }}>
       <View style={{margin: 20}}>
         <View style={DeviceManagerScreenStyle.spaceBetween}>
           <GoldGradientText style={styles.CinzelGold}>Your Device</GoldGradientText>
@@ -51,20 +55,23 @@ export function DeviceManagerScreen() {
         </View>
       </View>
       <View style={DeviceManagerScreenStyle.optionButtons}>
-        <View style={DeviceManagerScreenStyle.optionButton}>
+        <Pressable style={DeviceManagerScreenStyle.optionButton}
+        onPress={() => {
+          navigation.navigate('CartridgeManagerScreen')
+        }}>
           <Image source={require('../assets/icons/threeDots.png')} style={{...styles.goldIcon, margin: 10}}/>
           <GoldGradientText style={styles.InterGold}>Cartridge Manager</GoldGradientText>
-        </View>
-        <View style={DeviceManagerScreenStyle.optionButton}>
+        </Pressable>
+        <Pressable style={DeviceManagerScreenStyle.optionButton}>
           <Image source={require('../assets/icons/lock.png')} style={{...styles.goldIcon, margin: 10}}/>
           <GoldGradientText style={styles.InterGold}>Travel Mode</GoldGradientText>
-        </View>
-        <View style={DeviceManagerScreenStyle.optionButton}>
+        </Pressable>
+        <Pressable style={DeviceManagerScreenStyle.optionButton}>
           <Image source={require('../assets/icons/questionMark.png')} style={{...styles.goldIcon, margin: 10}}/>
           <GoldGradientText style={styles.InterGold}>Help & Support</GoldGradientText>
-        </View>
+        </Pressable>
       </View>
-      </View>
+      </LinearGradient>
     </View>
   );
 }

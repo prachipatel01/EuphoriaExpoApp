@@ -1,4 +1,5 @@
 import {Dimensions, StyleSheet} from 'react-native';
+import { color } from 'react-native-reanimated';
 
 export const dimensions = {
   fullHeight: Dimensions.get('window').height,
@@ -7,7 +8,8 @@ export const dimensions = {
 
 export const colors = {
   black: '#08080A',
-  grey: '#575757',
+  grey: '#353535',
+  darkGrey: '#222222',
   goldDark: '#987952',
   goldLight: '#EEDABC',
   white: '#FFFFFF',
@@ -266,11 +268,13 @@ export const styles = StyleSheet.create({
     borderRadius: 2,
   },
   tryItOnButton: {
-    width: dimensions.fullWidth,
+    width: dimensions.fullWidth - 25,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#0A0500',
+    // backgroundColor: '#0A0500',
     padding: 15,
+    marginLeft: 10,
+    marginRight: 10,
   },
   bottomTab: {
     height: 75,
@@ -478,7 +482,34 @@ export const styles = StyleSheet.create({
   goldButtonDefault: {
     justifyContent: 'center',
     alignItems: 'center',
-  }
+  },
+  input: {
+    backgroundColor: colors.black,
+    borderColor: colors.goldLight,
+    borderWidth: 1,
+    borderRadius: 20,
+    padding: 10,
+    width: dimensions.fullWidth - 100,
+    color: colors.goldLight,
+  },
+  inputSubmit: {
+    backgroundColor: colors.goldLight,
+    borderRadius: 20,
+    padding: 10,
+    width: dimensions.fullWidth - 200,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 20,
+    marginBottom: 10,
+  },
+  onClickCamera: {
+    width: 50,
+    height: 50,
+    borderColor: colors.goldLight,
+    borderWidth: 1,
+    borderRadius: 25,
+    backgroundColor: 'pink'
+  },
 });
 
 

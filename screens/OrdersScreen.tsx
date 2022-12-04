@@ -2,10 +2,11 @@ import React from 'react';
 import {StyleSheet, View, ScrollView} from 'react-native';
 import {Shades} from '../assets/shades';
 import {ShadeOrder} from '../components/ShadeOrder';
+import { styles } from '../CSS';
 
 export function OrdersScreen({navigation}) {
   return (
-    <ScrollView style={ShadeOrderStyle.container}>
+    <ScrollView style={styles.body}>
       {Shades.map((shade, key) => {
         return (
           <View key={key}>

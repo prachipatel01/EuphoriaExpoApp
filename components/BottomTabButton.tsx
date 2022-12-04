@@ -2,17 +2,17 @@ import * as React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import { Image, View } from 'react-native';
+import { Image, Pressable, View } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {GoldGradient} from '../components/Gradient';
 
 import {ShopScreen} from '../screens/ShopScreen';
-import {CameraScreen} from '../screens/CameraScreen';
+import {CameraScreen, CameraContainer} from '../screens/CameraScreen';
 import {ClosetScreen} from '../screens/ClosetScreen';
 import {AccountScreen} from '../screens/AccountScreen';
 import {CreateShadeScreen} from '../screens/CreateShadeScreen';
 import {HomeScreen} from '../screens/HomeScreen';
-import {styles} from '../CSS';
+import {colors, styles} from '../CSS';
 import { Header } from './Header';
 import { MyCartScreen } from '../screens/MyCartScreen';
 import { OrdersScreen } from '../screens/OrdersScreen';
@@ -27,13 +27,15 @@ import { AppVersionScreen } from '../screens/AppVersionScreen';
 import { RoughScreen } from '../screens/Rough';
 import { UserManualScreen } from '../screens/UserManualScreen';
 import { ShadesFromBase } from '../screens/ShadesFromBase';
+import { SignUp, SignIn } from '../screens/SignupSignin';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
 function CameraButton() {
   return (
-    <View>
+    <View
+    style={styles.cameraButton}>
       <Image source={require('../assets/icons/ticket.png')} style={styles.bottomTabIcons}/>
     </View>
   )
@@ -78,13 +80,16 @@ function MyTabs() {
         component={CameraScreen}
         options={{
           tabBarLabel: 'Camera',
-          tabBarIcon: ({color, size}) => (
-            // <CameraButton />
-            <GoldGradient component={CameraButton} style={styles.cameraButton}></GoldGradient>
-            // <Image source={require('../assets/icons/ticket.png')} style={styles.bottomTabIcons}/>
+          // tabBarIcon: ({color, size}) => (
+          //   <GoldGradient component={CameraButton} style={styles.cameraButton}></GoldGradient>
+          // ),
+          tabBarIcon: (props) => (
+            <CameraButton/>
           ),
-          header: (props) => (<Header name="CAMERA" isArrow={false}/>),
+          // header: (props) => (<Header name="CAMERA" isArrow={false}/>),
+          headerShown: false,
           tabBarShowLabel: false,
+          tabBarActiveBackgroundColor: colors.goldLight,
         }}
       />
       <Tab.Screen
@@ -119,10 +124,22 @@ function MyTabs() {
 function ScreenStack() {
   return (
     <Stack.Navigator
-      initialRouteName="MyTabsScreen"
+      initialRouteName="Signup"
       screenOptions={{
         // headerShown: false,
       }}>
+      <Stack.Screen 
+        name="SignUp" 
+        component={SignUp} 
+        options={{
+          header: (props) => (<Header name="SIGN UP"/>),
+        }}/>
+      <Stack.Screen 
+        name="SignIn" 
+        component={SignIn} 
+        options={{
+          header: (props) => (<Header name="SIGN IN"/>),
+      }}/>
       <Stack.Screen 
         name="MyTabsScreen" 
         component={MyTabs} 
@@ -130,10 +147,16 @@ function ScreenStack() {
           headerShown: false
         }}/>
       <Stack.Screen 
+        name="CameraContainer" 
+        component={CameraContainer} 
+        options={{
+          headerShown: false
+        }}/>
+      <Stack.Screen 
         name="ShadeFromBase" 
         component={ShadesFromBase} 
         options={{
-          header: (props) => (<Header name="" isArrow={true}/>),
+          header: (props) => (<Header name="" isArrow={true} {...props}/>),
         }}/>
       <Stack.Screen 
         name="CreateShadeScreen" 
@@ -212,19 +235,19 @@ function ScreenStack() {
         options={{
           header: (props) => (<Header name="APP VERSION" isArrow={true}/>),
         }}/>
-      <Stack.Screen 
+      {/* <Stack.Screen 
         name="RoughScreen" 
         component={RoughScreen} 
         options={{
           header: (props) => (<Header name="ROUGH SCREEN" isArrow={true}/>),
-        }}/>
+        }}/> */}
     </Stack.Navigator>
   );
 }
 
 
 
-export default function App() {
+export default function DefaultScreen() {
   return (
     <NavigationContainer>
       {/* <MyTabs />  */}

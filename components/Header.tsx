@@ -1,5 +1,5 @@
 import React from "react";
-import { Image, View } from "react-native";
+import { Image, Pressable, View } from "react-native";
 import { colors, styles } from "../CSS";
 import { GoldGradient, GoldGradientText } from "./Gradient";
 
@@ -33,9 +33,12 @@ export function Header(props) {
         <View style={styles.header}>
             <View style={styles.headerContainer}>
             {props.isArrow? (
-                <View style={{padding: 10}}>
+                <Pressable style={{padding: 10}}
+                onPress={() => {
+                    props.navigation.goBack();
+                }}>
                     <Image source={require('../assets/icons/leftArrow.png')}/>
-                </View>
+                </Pressable>
             ) : (<View/>)}
             <GoldGradientText style={{...styles.CinzelGold, padding: 10}}>
                 {props.name}

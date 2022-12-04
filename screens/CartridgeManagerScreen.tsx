@@ -5,6 +5,7 @@ import {CartridgeWheel, CartridgeDeviceWheel} from '../components/CartridgeValue
 import {colors, dimensions, styles} from '../CSS';
 import {StyleSheet} from 'react-native';
 import { GoldGradientText } from '../components/Gradient';
+import { LinearGradient } from 'expo-linear-gradient';
 
 export function CartridgeManagerWheel({cartridges}) {
   return (
@@ -49,7 +50,10 @@ export function CartridgeManagerScreen() {
       <View style={{alignItems: 'center'}}>
         <CartridgeManagerWheel cartridges={cartridges}/>
       </View>
-      <View style={CartridgeManagerScreenStyle.container}>
+      <LinearGradient style={CartridgeManagerScreenStyle.container}
+      colors={[colors.grey, colors.darkGrey]}
+      start={{ x: 0, y: 0 }}
+      end={{ x: 1, y: 0 }}>
         <View>
           <View>
             <GoldGradientText style={{...styles.CinzelGold, margin: 20, marginBottom: 0}}>CARTRIDGE SET</GoldGradientText>
@@ -86,7 +90,7 @@ export function CartridgeManagerScreen() {
             </View>
           </View>
         </View>
-      </View>
+      </LinearGradient>
     </ScrollView>
     </SafeAreaView>
 
